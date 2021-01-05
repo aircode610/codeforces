@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+const int M=1e9+10;
+const int MOD=1e9+7;
+//
+#define _ %MOD
+#define __ %=MOD
+int pw(int a,int b)
+{
+  if(b==0LL)return 1LL;
+  int p=pw(a,b/2LL);
+  if(b%2LL==0LL)
+    return p*p _;
+  return p*p _ * a _;
+}
+//
+int32_t main()
+{
+  int n, m;
+  cin >> n >> m;
+  int hal = 1;
+  for (int i = 1; i <= m; i++)
+    hal *= 2;
+  hal--;
+  cout << pw(hal, n) << endl;
+  return 0;
+}
