@@ -1,11 +1,11 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <bits/stdc++.h>
 #define int long long
-const int M=2e5+10;
-const int MOD=998244353;
-//
 #define _ %MOD
 #define __ %=MOD
+
+using namespace std;
+
+const int M=2e5+10, MOD=998244353;
 int fac[M],ifac[M];
 int pw(int a,int b)
 {
@@ -21,7 +21,6 @@ int inv(int a)
 }
 int comb(int a,int b)
 {
-  if (b > a) return 0;
   return fac[a]*ifac[b] _ *ifac[a-b] _;//a!/(b!(a-b)!)
 }
 void prec()
@@ -36,7 +35,11 @@ void prec()
 
 int32_t main() {
 
-  
+  prec();
+  int n, m; cin >> n >> m;
+  int ans = ((comb(m, n-1)*(n-2))%MOD*pw(2,n-3))%MOD;
+
+  cout << ans << endl;
   
   return 0;
 }
