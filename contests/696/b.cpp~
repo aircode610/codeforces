@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+const int n = 10000;
+bool prime[n];
+
+int solve(int d){
+  int div1 = 1+d;
+  while (true){
+    if (prime[div1++])
+      break;
+  }
+  div1--;
+  int div2 = div1+d;
+  while (true){
+    if (prime[div2++])
+      break;
+  }
+  div2--;
+  return div1*div2;
+}
+
+int32_t main() {
+  for(int i=2;i<=n;i++)
+    prime[i]=true;
+  for(int i=2;i<=n;i++)
+    if(prime[i]){
+	for(int j=2;i*j<=n;j++)
+	  prime[i*j]=false;
+      }
+  int t; cin >> t;
+  while (t--){
+    int d; cin >> d;
+    int ans = solve(d);
+    cout << ans << endl;
+  }
+  return 0;
+}
+
