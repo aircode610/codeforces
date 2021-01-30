@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+int32_t main() {
+  int t; cin >> t;
+  while (t--){
+    int boys, girls, k;
+    cin >> bots >> girls >> k;
+    for (int i = 1; i <= k; i++)
+      cin >> a[i];
+    for (int i = 1; i <= k; i++)
+      cin >> b[i];
+    vector<pair<int, int> > all_pairs;
+    for (int i = 1; i <= k; i++){
+      all_pairs.push_back({a[i], b[i]});
+    }
+    sort(all_pairs.begin(), all_pairs.end());
+    int cnt = 0;
+    while (cnt < all_pairs.size()){
+      
+    }
+  }
+  return 0;
+}
+
