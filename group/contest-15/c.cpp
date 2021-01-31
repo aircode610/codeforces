@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int M = 1e3, MOD=998244353;
-int n, a[M];
+const int M = 1e3+10, MOD=998244353;
+int n, a[M], dp[M];
 
 #define _ %MOD
 #define __ %=MOD
@@ -38,22 +38,32 @@ void prec()
     }
 }
 
-bool isGood(
-
 int32_t main() {
   cin >> n;
-  prec();
   
+  prec();  
   for (int i = 1; i <= n; i++)
     cin >> a[i];
-  cout << comb(3, 1) << endl;
+
+  dp[n+1] = 1;
+  for (int i = n; i >= 1; i--){
+    if (a[i] <= 0){
+      dp[i] = 0;
+      continue;
+    }
+    else{
+      for (int j = i+a[i]+1; j <= n+1; j++){
+	(dp[i] += comb(j-i-1, a[i])*dp[j] _)__;
+      }
+    }
+  }
+
   int ans = 0;
   for (int i = 1; i <= n; i++){
-    if (a[i] <= 0)
-      continue;
-    cout << n-i << " " << a[i] << " " << comb(n-i,a[i]) << endl;
-    ans += comb(n-i,a[i]);
+    (ans += dp[i]_)__;
   }
+
   cout << ans << endl;
+  
   return 0;
 }
