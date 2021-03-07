@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+int n;
+
+int32_t main() {
+  cin >> n;  
+  int l=1, r=n, mid, sm, sm1;
+  cout << "? " + to_string(l) + ' ' + to_string(r) << endl;
+  cout.flush();
+  cin >> sm;
+  mid = (l+r)/2;
+  if (sm > mid){
+    l = mid;
+    int l2 = l;
+    while (r-l2 > 1){
+      mid = (l2+r)/2;
+      cout << "? " + to_string(l) + ' ' + to_string(mid) << endl;
+      cout.flush();
+      cin >> sm1;
+      if (sm == sm1){
+	r = mid;
+      }
+      else {
+	l2 = mid;
+      }
+    }
+    cout << "! " + to_string(r) << endl;
+  }
+  else{
+    r = mid;
+    int r2 = r;
+    while (r2-l > 1){
+      mid = (l+r2)/2;
+      cout << "? " + to_string(mid) + ' ' + to_string(r) << endl;
+      cout.flush();
+      cin >> sm1;
+      if (sm == sm1){
+	l = mid;
+      }
+      else {
+	r2 = mid;
+      }
+    }
+    cout << "! " + to_string(l) << endl;
+  }
+  return 0;
+}
+
