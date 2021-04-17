@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+const int M = 2000+10, INF = 2000+10;
+int t, n, board[M][M], prec[10][4];
+
+void clear() {
+  for (int i = 1; i < 10; i++){
+    prec[i][0] = INF;
+    prec[i][2] = INF;
+  }
+}
+
+void solve() {
+  cin >> n;
+  clear();
+  char inp;
+  for (int i = 1; i <= n; i++){
+    for (int j = 1; j <= n; j++){
+      cin >> inp;
+      board[i][j] = inp-'0';
+    }
+  }
+
+  //precalculate min row, max row, ...
+  for (int i = 1; i <= n; i++){
+    for (int j = 1; j <= n; j++){
+      if (i < prec[board[i][j]][0]) //min row
+	prec[board[i][j]][0] = i;
+      if (i > prec[board[i][j]][1]) //max row
+	prec[board[i][j]][1] = i;
+      if (j < prec[board[i][j]][2]) //min col
+	prec[board[i][j]][2] = j;
+      if (j > prec[board[i][j]][3]) //max col
+	prec[board[i][j]][3] = j;
+    }
+  }
+
+  int ans[10];
+  fill(ans, ans+10, 0);
+  for (int i = 1; i <= n; i++){
+    for (int j = 1; j <= n; j++){
+      ans[board[i][j]] = max(ans[board[i][j]], max(j-1, n-j)*max(prec[board[i][j]][1]-i, i-prec[board[i][j]][0]));
+      ans[board[i][j]] = max(ans[board[i][j]], max(i-1, n-i)*max(prec[board[i][j]][3]-j, j-prec[board[i][j]][2]));
+    }
+  }
+  for (int i = 1; i < 10; i++)
+    cout << ans[i] << ' ';
+  cout << endl;
+}
+
+int32_t main(){
+  cin >> t;
+  while (t--)
+    solve();
+  return 0;
+}

@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+const int INF = 1e18+10;
+
+int32_t main(){
+  int t; cin >> t;
+  while (t--){
+    int n; cin >> n;
+    vector<int> zoj, fard;
+    for (int i = 1; i <= n; i++){
+      int num; cin >> num;
+      if (i % 2 == 0)
+	zoj.push_back(num);
+      else
+	fard.push_back(num);
+    }
+
+    int answ = INF;
+    for (int i = 2; i <= n; i++){
+      int ans = 0, tof, toz;
+      if (i % 2 == 0){
+	tof = i/2;
+	toz = i/2;
+      }
+      else{
+	tof = i/2+1;
+	toz = i/2;
+      }
+
+      int minf=INF, minz=INF;
+      for (int j = 0; j < tof; j++){
+	ans += fard[j];
+	minf = min(minf, fard[j]);
+      }
+      for (int j = 0; j < toz ; j++){
+	ans += zoj[j];
+	minz = min(minz, zoj[j]);
+      }
+      ans += minf*(n-tof)+minz*(n-toz);
+      answ = min(answ, ans);
+    }
+    cout << answ << endl;
+  }
+  return 0;
+}
