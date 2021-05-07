@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+int32_t main() {
+  int t; cin >> t;
+  while (t--){
+    int n; cin >> n;
+    int cnt = 0, ans = 0;
+    vector<int> dig;
+    while (n != 0){
+      dig.push_back(n%10);
+      n /= 10;
+      cnt++;
+    }
+    reverse(dig.begin(), dig.end());
+    ans = (cnt-1)*9;
+    bool con = true;
+    for (int i = 1; i < dig.size(); i++)
+      if (dig[i] != dig[0])
+	con = false;
+    if (con == true){
+      ans += dig[0];
+    }
+    else {
+      ans += dig[0]-1;
+    }
+    cout << ans << endl;
+  }
+  return 0;
+}
