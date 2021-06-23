@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+int32_t main() {
+  int k; cin >> k;
+  while (k--){
+    int n, x, t;
+    cin >> n >> x >> t;
+    int ans = 0;
+    if (t < x){
+      cout << 0 << endl;
+      continue;
+    }
+    else {
+      int dis = t/x;
+      ans += dis*(dis-1)/2;
+      ans += (n-dis)*dis;
+    }
+    cout << ans << endl;
+  }
+  return 0;
+}
