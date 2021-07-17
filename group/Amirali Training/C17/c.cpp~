@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+const int M = 5e5+10;
+int A, B, C, D, ans;
+
+int32_t main() {
+  cin >> A >> B >> C >> D;
+  for (int i = A+B; i <= B+C; i++){
+    
+  }
+  cout << ans << endl;
+  return 0;
+}
+
